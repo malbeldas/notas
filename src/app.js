@@ -3,16 +3,19 @@ const app = express();
 const path = require('path');
 const methodOverride = require("method-override");
 
-const notitasRouter = require ("./routers/notitas")
+const notasRouter = require ("./routers/notas")
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"))
+
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use("/", notitasRouter);
+app.use("/", notasRouter);
 
 
 let puerto = 3000;

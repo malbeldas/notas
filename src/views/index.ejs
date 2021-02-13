@@ -21,54 +21,29 @@
 
     <main>
         <section class="new">
-            <form action="">
+            <form action="/" method="POST">
                 <input type="text" name="title" placeholder="Título">
-                <textarea name="" id="" cols="30" placeholder="Añade una nota..."></textarea>
+                <textarea name="text" id="" cols="30" placeholder="Añade una nota..."></textarea>
                 <button type="submit">Crear</button>
             </form>
         </section>
         <section class="list">
-            <div class="note">
-                <h2>Un título</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, placeat sapiente! Accusantium sit quod quos.</p>
-                <div class="edit">
-                    <a href="#"><i class="far fa-edit"></i></a>
-                    <form action="">
-                        <button type="submit"><i class="far fa-trash-alt"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="note">
-                <h2>Un título</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, placeat sapiente! Accusantium sit quod quos.</p>
-                <div class="edit">
-                    <a href="#"><i class="far fa-edit"></i></a>
-                    <form action="">
-                        <button type="submit"><i class="far fa-trash-alt"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="note">
-                <h2>Un título</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, placeat sapiente! Accusantium sit quod quos.</p>
-                <div class="edit">
-                    <a href="#"><i class="far fa-edit"></i></a>
-                    <form action="">
-                        <button type="submit"><i class="far fa-trash-alt"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="note">
-                <h2>Un título</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, placeat sapiente! Accusantium sit quod quos.</p>
-                <div class="edit">
-                    <a href="#"><i class="far fa-edit"></i></a>
-                    <form action="">
-                        <button type="submit"><i class="far fa-trash-alt"></i></button>
-                    </form>
-                </div>
-            </div>
             
+            <% for (let i = 0; i < notas.length; i++) { %>
+                
+                <div class="note">
+                    <h2><%= notas[i].titulo %></h2>
+                    <p><%= notas[i].texto %></p>
+                    <div class="edit">
+                        <a href="/<%= notas[i].id %>/detail"><i class="far fa-edit"></i></a>
+                        <form action="/<%= notas[i].id%>/delete?_method=DELETE" method="POST">
+                            <button type="submit"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </div>
+                </div>
+                
+            <% } %>           
+
         </section>
     </main>
 
